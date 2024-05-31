@@ -3,13 +3,13 @@
 .subtext,
 .navContainer p,
 .Chefbot {
-  user-select: none;
+  user-select: none; 
 }
 
 .menu-arrow svg {
   margin-left: -0.6em;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
+  vertical-align: middle; 
+  transition: transform 0.3s ease; 
   position: absolute;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .rotate svg {
-  transform: rotate(180deg); 
+  transform: rotate(180deg); /* Rotates the SVG when the submenu is visible */
 }
 
 .menu-arrow {
@@ -104,7 +104,7 @@
 }
 
 .borgir {
-  margin-top: -4.5em;
+  margin-top: -2.5rem;
   height: 1.5em;
 }
 
@@ -140,11 +140,11 @@ nav {
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  margin-left: auto; 
+  margin-left: auto; /* This pushes the burger-menu to the right */
 }
 
 .burger-bar {
-  width: 100%; 
+  width: 100%; /* Responsive width */
   height: 0.5em;
   background-color: rgb(51, 51, 51);
   border-radius: 0.5em;
@@ -233,9 +233,9 @@ nav {
   background-color: rgba(0, 0, 0, 0.3); 
   opacity: 0;
   transition: opacity 0.2s ease-in-out, backdrop-filter 0.4s ease-in-out; 
-  pointer-events: none;
-  z-index: 1; 
-  backdrop-filter: blur(0px);
+  pointer-events: none; 
+  z-index: 1; /* Ensure this is below the menu but above other content */
+  backdrop-filter: blur(0px); 
 }
 
 .overlay.visible {
@@ -255,11 +255,12 @@ nav {
   width: 10rem;
   height: auto;
 }
+
 .desktop-menu {
   display: none;
 }
 
-
+/* DESKTOP */
 @media (min-width: 768px) {
     .burger-menu, .menu, .overlay, .navContainer {
         display: none; 
@@ -271,16 +272,29 @@ nav {
         gap: 1rem;
         align-items: center;
         width: 100%;
-
     }
 
     .desktop-menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative; 
+        padding-left: 3rem;
+        padding-right: 1rem;
     }
 
     .desktop-menu p {
-        margin: 0 20px;
+        margin: 0 10px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .menu-arrow, .menu-arrow2 {
+        margin: 0;
+        margin-left: 1rem;
+        margin-top: -.6rem;
+        position: static;
     }
 
     .desktop-menu .submenu {
@@ -296,4 +310,11 @@ nav {
     .desktop-menu-item:hover .submenu {
         display: block;
     }
+
+    .subtext {
+      padding: 5px;
+      margin: .5rem 2rem;
+      
+    }
+
 }

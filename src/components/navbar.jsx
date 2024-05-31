@@ -42,10 +42,10 @@ const Navbar = () => {
     const menuClass = menuVisible ? 'menu visible' : 'menu hidden';
     const overlayClass = menuVisible ? 'overlay visible' : 'overlay';
 
-
+    // List of routes where the navbar should be hidden
     const hiddenRoutes = ["/"];
 
-
+    // Check if the current route is in the hiddenRoutes array
     const isHidden = hiddenRoutes.includes(location.pathname);
 
     return (
@@ -58,7 +58,7 @@ const Navbar = () => {
                     <div className="desktop-menu">
                         {['Recipes', 'My Food', 'Groceries'].map(item => (
                             <div key={item} className="desktop-menu-item">
-                                <p onClick={() => toggleSubmenu(item)}>
+                                <p onClick={() => item !== 'Groceries' && toggleSubmenu(item)}>
                                     {item}
                                     {item !== 'Groceries' && (
                                         <span className={`menu-arrow${item === 'My Food' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
@@ -70,8 +70,8 @@ const Navbar = () => {
                                         </span>
                                     )}
                                 </p>
-                                {submenuVisible[item] && (
-                                    <div className="submenu">
+                                {item !== 'Groceries' && (
+                                    <div ref={el => submenuRefs.current[item] = el} className={`submenu ${submenuVisible[item] ? 'submenu-visible' : ''}`}>
                                         {item === 'Recipes' && (
                                             <div className="subContent">
                                                 <div onClick={() => handleMenuClick('/CreateRecipe')} className='subtext'>Create recipe</div>
@@ -89,8 +89,8 @@ const Navbar = () => {
                             </div>
                         ))}
                     </div>
-                    <div className='burger-menu borgir' onClick={toggleMenu}>
-                        <h1 >≡</h1>
+                    <div className='burger-menu' onClick={toggleMenu}>
+                        <div className='borgir'><h1>≡</h1></div>
                     </div>
                     <div className={menuClass}>
                         <div className='Chefbot'>
@@ -119,7 +119,7 @@ const Navbar = () => {
                                             </span>
                                         )}
                                     </p>
-                                    {submenuVisible[item] && (
+                                    {item !== 'Groceries' && (
                                         <div ref={el => submenuRefs.current[item] = el} style={{
                                             overflow: 'hidden',
                                             height: '0px', // Initially hidden
