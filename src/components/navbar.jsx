@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import "../components/styles/Navbar.css"
+import "../components/styles/Navbar.css";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -42,26 +42,60 @@ const Navbar = () => {
     const menuClass = menuVisible ? 'menu visible' : 'menu hidden';
     const overlayClass = menuVisible ? 'overlay visible' : 'overlay';
 
-    // List of routes where the navbar should be hidden
+
     const hiddenRoutes = ["/"];
 
-    // Check if the current route is in the hiddenRoutes array
+
     const isHidden = hiddenRoutes.includes(location.pathname);
 
     return (
-        <div style={{ }}>
+        <div>
             {!isHidden && (
                 <nav>
                     <a href="/">
-                        <img className="headerLogo" src="/images/logo.png" alt=""/>
+                        <img className="headerLogo" src="/images/logo.png" alt="Logo" />
                     </a>
-                    <div className='burger-menu' onClick={toggleMenu}>
-                        <div className='borgir'><h1>≡</h1></div>
+                    <div className="desktop-menu">
+                        {['Recipes', 'My Food', 'Groceries'].map(item => (
+                            <div key={item} className="desktop-menu-item">
+                                <p onClick={() => toggleSubmenu(item)}>
+                                    {item}
+                                    {item !== 'Groceries' && (
+                                        <span className={`menu-arrow${item === 'My Food' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
+                                            <svg fill="#6F6F6F" height="15px" width="15px" viewBox="0 0 330 330" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+                                                    c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+                                                    s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+                                            </svg>
+                                        </span>
+                                    )}
+                                </p>
+                                {submenuVisible[item] && (
+                                    <div className="submenu">
+                                        {item === 'Recipes' && (
+                                            <div className="subContent">
+                                                <div onClick={() => handleMenuClick('/CreateRecipe')} className='subtext'>Create recipe</div>
+                                                <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
+                                            </div>
+                                        )}
+                                        {item === 'My Food' && (
+                                            <div className="subContent">
+                                                <div onClick={() => handleMenuClick('/Ingredients')} className='subtext'>Pantry</div>
+                                                <div onClick={() => handleMenuClick('/Allergies')} className='subtext'>Preferences</div>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                    <div className='burger-menu borgir' onClick={toggleMenu}>
+                        <h1 >≡</h1>
                     </div>
                     <div className={menuClass}>
-                        <div className='Chefbot' >
+                        <div className='Chefbot'>
                             <a href="/">
-                                <img className="navbarLogo" src="/images/logo.png" alt=""/>
+                                <img className="navbarLogo" src="/images/logo.png" alt="Logo" />
                             </a>
                         </div>
                         <div className='navBarExit' onClick={toggleMenu}><h1>
@@ -71,37 +105,40 @@ const Navbar = () => {
                             </svg>
                         </h1></div>
                         <div className='navContainer'>
-                            {['Recipes', 'My food', 'Groceries'].map(item => (
+                            {['Recipes', 'My Food', 'Groceries'].map(item => (
                                 <div key={item} className='menu-item' onClick={() => item !== 'Groceries' ? toggleSubmenu(item) : handleMenuClick('/groceries')}>
                                     <p>
                                         {item}
-                                        {item !== 'Groceries' && 
-                                        <span className={`menu-arrow${item === 'my food' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
-                                            <svg fill="#6F6F6F" height="15px" width="15px" viewBox="0 0 330 330" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
-                                                c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
-                                                s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
-                                            </svg>
-                                        </span>}
+                                        {item !== 'Groceries' && (
+                                            <span className={`menu-arrow${item === 'My Food' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
+                                                <svg fill="#6F6F6F" height="15px" width="15px" viewBox="0 0 330 330" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
+                                                        c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
+                                                        s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+                                                </svg>
+                                            </span>
+                                        )}
                                     </p>
-                                    {item !== 'groceries' && <div ref={el => submenuRefs.current[item] = el} style={{
-                                        overflow: 'hidden',
-                                        height: '0px', // Initially hidden
-                                        transition: 'height 0.3s ease-in-out'
-                                    }}>
-                                        {item === 'Recipes' && (
-                                            <div className='subContent' style={{padding: '5px', backgroundColor: '#B8EAE0'}}>
-                                                <div onClick={() => handleMenuClick('/CreateRecipe')} className='subtext'>Create recipe</div>
-                                                <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
-                                            </div>
-                                        )}
-                                        {item === 'My food' && (
-                                            <div style={{padding: '5px', backgroundColor: '#B8EAE0'}}>
-                                                <div onClick={() => handleMenuClick('/Ingredients')} className='subtext'>Pantry</div>
-                                                <div onClick={() => handleMenuClick('/Allergies')} className='subtext'>Preferences</div>
-                                            </div>
-                                        )}
-                                    </div>}
+                                    {submenuVisible[item] && (
+                                        <div ref={el => submenuRefs.current[item] = el} style={{
+                                            overflow: 'hidden',
+                                            height: '0px', // Initially hidden
+                                            transition: 'height 0.3s ease-in-out'
+                                        }}>
+                                            {item === 'Recipes' && (
+                                                <div className='subContent' style={{ padding: '5px', backgroundColor: '#B8EAE0' }}>
+                                                    <div onClick={() => handleMenuClick('/CreateRecipe')} className='subtext'>Create recipe</div>
+                                                    <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
+                                                </div>
+                                            )}
+                                            {item === 'My Food' && (
+                                                <div style={{ padding: '5px', backgroundColor: '#B8EAE0' }}>
+                                                    <div onClick={() => handleMenuClick('/Ingredients')} className='subtext'>Pantry</div>
+                                                    <div onClick={() => handleMenuClick('/Allergies')} className='subtext'>Preferences</div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
