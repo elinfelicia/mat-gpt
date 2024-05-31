@@ -1,6 +1,8 @@
 .landingButton-group {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
   margin-top: 3rem;
 }
@@ -9,6 +11,9 @@
   margin: 10px;
   padding: 1rem 2rem;
   font-size: 1.25rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .landingButton1 {
@@ -17,7 +22,7 @@
   border-radius: 5px;
 }
 
-.landingButton2 {
+.landingButton1:hover {
   border: 1px solid #1ABC9C;
   border-radius: 5px;
   background-color: transparent;
