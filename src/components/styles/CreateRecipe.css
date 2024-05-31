@@ -68,12 +68,16 @@ p2.cooking-time {
   border: none;
   border-radius: 5px;
   font-size: 1.25rem;
-  color: white;
+
   margin-top: 20px;
 }
 
 .create-button:hover {
-  background-color: #16a085;
+    border: 1px solid #1ABC9C;
+    border-radius: 5px;
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
 }
 
 .create-recipe-buttons-wrapper {

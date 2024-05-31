@@ -44,16 +44,22 @@
   border: none;
   font-size: 1.25rem;
   margin: 2rem;
-
-
+}
+.ArrowButton:hover{
+  border: 1px solid #1ABC9C;
+  border-radius: 5px;
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
 }
 
 .recipe-wrapper .ArrowButton {
   position: unset;
   align-self:first baseline;
-
-
 }
+
+
+
 .button-container {
   display: flex;
   flex-wrap: wrap;
@@ -97,6 +103,13 @@
   border: none;
   border-radius: 5px;
   font-size: 1.25rem;
+}
+.nextButton:hover{
+  border: 1px solid #1ABC9C;
+  border-radius: 5px;
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
 }
 
 .dietButton:hover, .allergieButton:hover {

@@ -123,7 +123,6 @@
   text-align: center; /* Center button text */
   margin: 10px; /* Space around the buttons */
   background-color: #1ABC9C;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -131,6 +130,11 @@
 }
 
 .recipe-button:hover {
-  background-color: #16a085; /* Slightly darker shade on hover */
-}
+    border: 1px solid #1ABC9C;
+    border-radius: 5px;
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+  }
+
 
