@@ -56,12 +56,12 @@ const Navbar = () => {
                         <img className="headerLogo" src="/images/logo.png" alt="Logo" />
                     </a>
                     <div className="desktop-menu">
-                        {['Recipes', 'My Food', 'Groceries'].map(item => (
+                        {['Recipes', 'My Profile'].map(item => (
                             <div key={item} className="desktop-menu-item">
                                 <p onClick={() => item !== 'Groceries' && toggleSubmenu(item)}>
                                     {item}
                                     {item !== 'Groceries' && (
-                                        <span className={`menu-arrow${item === 'My Food' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
+                                        <span className={`menu-arrow${item === 'My Profile' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
                                             <svg fill="#6F6F6F" height="15px" width="15px" viewBox="0 0 330 330" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
                                                     c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
@@ -75,11 +75,11 @@ const Navbar = () => {
                                         {item === 'Recipes' && (
                                             <div className="subContent">
                                                 <div onClick={() => handleMenuClick('/CreateRecipe')} className='subtext'>Create recipe</div>
-                                                <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
                                             </div>
                                         )}
-                                        {item === 'My Food' && (
+                                        {item === 'My Profile' && (
                                             <div className="subContent">
+                                                <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
                                                 <div onClick={() => handleMenuClick('/Ingredients')} className='subtext'>Pantry</div>
                                                 <div onClick={() => handleMenuClick('/Allergies')} className='subtext'>Preferences</div>
                                             </div>
@@ -105,12 +105,12 @@ const Navbar = () => {
                             </svg>
                         </h1></div>
                         <div className='navContainer'>
-                            {['Recipes', 'My Food', 'Groceries'].map(item => (
+                            {['Recipes', 'My Profile'].map(item => (
                                 <div key={item} className='menu-item' onClick={() => item !== 'Groceries' ? toggleSubmenu(item) : handleMenuClick('/groceries')}>
                                     <p>
                                         {item}
                                         {item !== 'Groceries' && (
-                                            <span className={`menu-arrow${item === 'My Food' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
+                                            <span className={`menu-arrow${item === 'My Profile' ? '2' : ''} ${submenuVisible[item] ? 'rotate' : ''}`}>
                                                 <svg fill="#6F6F6F" height="15px" width="15px" viewBox="0 0 330 330" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393
                                                         c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393
@@ -128,11 +128,11 @@ const Navbar = () => {
                                             {item === 'Recipes' && (
                                                 <div className='subContent' style={{ padding: '5px', backgroundColor: '#B8EAE0' }}>
                                                     <div onClick={() => handleMenuClick('/CreateRecipe')} className='subtext'>Create recipe</div>
-                                                    <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
                                                 </div>
                                             )}
-                                            {item === 'My Food' && (
+                                            {item === 'My Profile' && (
                                                 <div style={{ padding: '5px', backgroundColor: '#B8EAE0' }}>
+                                                    <div onClick={() => handleMenuClick('/SavedRecipe')} className='subtext'>Saved recipes</div>
                                                     <div onClick={() => handleMenuClick('/Ingredients')} className='subtext'>Pantry</div>
                                                     <div onClick={() => handleMenuClick('/Allergies')} className='subtext'>Preferences</div>
                                                 </div>

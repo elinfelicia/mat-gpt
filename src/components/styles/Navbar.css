@@ -3,22 +3,22 @@
 .subtext,
 .navContainer p,
 .Chefbot {
-  user-select: none; 
+  user-select: none;
 }
 
 .menu-arrow svg {
   margin-left: -0.6em;
-  vertical-align: middle; 
-  transition: transform 0.3s ease; 
+  vertical-align: middle;
+  transition: transform 0.3s ease;
   position: absolute;
 }
 
 .menu-arrow2 svg {
   margin-left: -0.44em;
-  vertical-align: middle; 
-  transition: transform 0.3s ease; 
+  vertical-align: middle;
+  transition: transform 0.3s ease;
   position: absolute;
-  color: blue; 
+  color: blue;
 }
 
 .rotate svg {
@@ -29,14 +29,14 @@
   margin-top: 12px;
   position: absolute;
   margin-left: 81px;
-  transition: transform 0.2s ease; 
+  transition: transform 0.2s ease;
 }
 
 .menu-arrow2 {
   margin-top: 12px;
   position: absolute;
   margin-left: 65px;
-  transition: transform 0.2s ease; 
+  transition: transform 0.2s ease;
 }
 
 .subtext {
@@ -49,7 +49,7 @@
 }
 
 .menu-item {
-  margin-bottom: -20px; 
+  margin-bottom: -20px;
   cursor: pointer;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .submenu-visible {
-  max-height: 200px; 
+  max-height: 200px;
   opacity: 1;
 }
 
@@ -127,8 +127,8 @@
 nav {
   height: 5em;
   display: flex;
-  justify-content: flex-start; 
-  align-items: center; 
+  justify-content: flex-start;
+  align-items: center;
   padding: 0.5rem;
   background-color: #1abc9c;
 }
@@ -188,18 +188,18 @@ nav {
   opacity: 0;
   transform: translateX(-100%);
   z-index: 2;
-  display: none; 
+  display: none;
 }
 
 .menu.visible {
-  display: block; 
-  animation: fadeIn 0.2s forwards; 
+  display: block;
+  animation: fadeIn 0.2s forwards;
   background-color: #1abc9c;
 }
 
 .menu.hidden {
   animation: fadeOut 0.2s forwards;
-  display: block; 
+  display: block;
 }
 
 @keyframes fadeIn {
@@ -225,29 +225,29 @@ nav {
 }
 
 .overlay {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); 
+  background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
-  transition: opacity 0.2s ease-in-out, backdrop-filter 0.4s ease-in-out; 
-  pointer-events: none; 
+  transition: opacity 0.2s ease-in-out, backdrop-filter 0.4s ease-in-out;
+  pointer-events: none;
   z-index: 1; /* Ensure this is below the menu but above other content */
-  backdrop-filter: blur(0px); 
+  backdrop-filter: blur(0px);
 }
 
 .overlay.visible {
   opacity: 1;
-  backdrop-filter: blur(2px); 
+  backdrop-filter: blur(2px);
 }
 
 .headerLogo {
   width: 10rem;
   height: auto;
   margin-left: 1rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
 .navbarLogo {
@@ -262,59 +262,65 @@ nav {
 
 /* DESKTOP */
 @media (min-width: 768px) {
-    .burger-menu, .menu, .overlay, .navContainer {
-        display: none; 
-    }
+  .burger-menu,
+  .menu,
+  .overlay,
+  .navContainer {
+    display: none;
+  }
 
-    .desktop-menu {
-        display: flex;
-        justify-content: flex-end;
-        gap: 1rem;
-        align-items: center;
-        width: 100%;
-    }
+  .desktop-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+   
+  }
 
-    .desktop-menu-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative; 
-        padding-left: 3rem;
-        padding-right: 1rem;
-    }
+  .desktop-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-right: 4rem;
+  
+  }
 
-    .desktop-menu p {
-        margin: 0 10px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
+  .desktop-menu p {
+    margin: 0 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
 
-    .menu-arrow, .menu-arrow2 {
-        margin: 0;
-        margin-left: 1rem;
-        margin-top: -.6rem;
-        position: static;
-    }
+  .menu-arrow,
+  .menu-arrow2 {
+    margin: 0;
+    margin-left: 1rem;
+    margin-top: -0.6rem;
+    position: static;
+  }
 
-    .desktop-menu .submenu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #f1f1f1;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 200;
-    }
+  .subContent{
+    background-color: #b8eaeb;
+  }
+  .desktop-menu .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f1f1f1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 200;
+  }
 
-    .desktop-menu-item:hover .submenu {
-        display: block;
-    }
+  .desktop-menu-item:hover .submenu {
+    display: block;
+  }
 
-    .subtext {
-      padding: 5px;
-      margin: .5rem 2rem;
-      
-    }
-
+  .subtext {
+    padding: 5px;
+    margin: 0.5rem 2rem;
+  }
 }
