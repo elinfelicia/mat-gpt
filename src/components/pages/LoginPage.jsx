@@ -1,13 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import axios from "../../Api/axios";
+const LOGIN_URL = '/Auth/login';
 
 function LoginPage() {
     const form = useForm();
     const { register, control, handleSubmit, formState } = form;
     const { errors } = formState;
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log('Form submitted', data);
+        const user = data.email;
+        const pwd = data.password;
+        try {
+            const response = await axios.post(LOGIN_URL,JSON.stringify({user,pwd}),{
+                headers: {'Content-Type': 'application/json'},
+                withCredentials:true
+            });
+            console.log(JSON.stringify(response))
+        } catch (error) {
+            console.error(error.message)
+        }
     };
 
     return (

@@ -1,13 +1,30 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import axios from "../../Api/axios";
+const SIGNUP_URL = '/Auth/register';
 
 function SignUp() {
     const form = useForm();
     const { register, control, handleSubmit, formState, watch } = form;
     const { errors } = formState;
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log('Form submitted', data);
+        const user = data.email;
+        const firstName = data.firstName;
+        const lastName = data.lastName;
+        const pwd = data.password;
+        const cpwd = data.password2;
+        try {
+            const response = await axios.post(SIGNUP_URL,JSON.stringify({firstName,lastName,user,pwd,cpwd}),{
+                headers: {'Content-Type': 'application/json'},
+                withCredentials:true
+            });
+            console.log(JSON.stringify(response))
+        } catch (error) {
+            console.error(error.message)
+        }
+        
     };
     const WatchPassword = watch("password");
 
